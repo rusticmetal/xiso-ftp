@@ -1,7 +1,5 @@
 .vscode
 build
-examples
 tests
-*.iso
-scripts/games/*
-scripts/transferred_games/*
+scripts/games
+scripts/transferred_games

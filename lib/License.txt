@@ -1,0 +1,8 @@
+License, from https://www.7-zip.org/sdk.html
+
+"LZMA SDK is placed in the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute the original LZMA SDK code, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means."
+
+I don't own any of the code in the /lib/lzma/ directory. Not all of the LZMA SDK library is present in this directory, only parts of it were used.
+/lib/lzma/7z/7zmain.c isn't linked to the executable, but was kept because I used a part of its main function.

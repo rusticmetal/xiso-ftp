@@ -99,6 +99,7 @@ typedef struct {
 } directory_entry;
 #pragma pack(pop)
 
-volume_descriptor * find_magic_signature(uint8_t * iso, size_t iso_file_size);
-bool entry_has_value(directory_entry * current_entry);
+volume_descriptor * find_magic_signature(const uint8_t * iso, const size_t iso_file_size);
+directory_entry * get_first_root_directory_entry(const volume_descriptor * vol_descriptor);
+bool entry_has_value(const directory_entry * current_entry);
 #endif
