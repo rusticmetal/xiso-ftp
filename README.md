@@ -7,9 +7,9 @@ and transfer them to a modded Xbox without having to write (and later delete) th
 
 Game files will extract to a new subfolder of the destination under the same name (or a similar/truncated name without special characters) as the game, minus the .iso extension, and will overwrite anything in that folder that shares names with the game data. If this is an issue for any reason, rename your conflicting iso to something else or make a folder for just your games.
 
-7z archive extraction will be slower and will take up a lot of ram depending on how large the given archive is. This is because it takes time and resources to map the archive's structure and extract the iso files into allocated memory, before attempting to even parse for the xdvd signature. However this way, you only need the compressed 7z file on your computer in order to get your playable games onto your Xbox, and no other files or folders will be written to the drive, saving you unnecessary disk wear. 7z archive extraction will also attempt to extract ALL iso images within the archive (one at a time).
+7z archive extraction will be slower and will take up a lot of ram depending on how large the given archive is. This is because it takes time and resources to map the archive's structure and extract the iso files into allocated memory, before attempting to even parse for the xdvd signature. However this way, you only need the compressed 7z file on your computer in order to get your playable games onto your Xbox, and no other files or folders will be written to the drive, saving you unnecessary disk wear. 7z archive extraction will also attempt to extract ALL iso images within the archive, if multiple exist (one at a time).
 
-Right now I don't think this works on Windows for local extraction at least because of mkdir() and because of how paths were handled, so you have to use Linux/WSL.
+Right now this program might not work 100% correctly Windows (for local extraction at least) because of mkdir() and because of how paths are handled, so you might have to use Linux/WSL to avoid any possible errors.
 
 # Usage
 
@@ -47,7 +47,7 @@ All flags must go before the iso file. Either `-f` or `-x` must be specified, an
 
 - `-x <local files destination>` : Local extraction mode. Requires a valid destination on the local machine, and will create a subfolder for the game files.
 
-- `-a` : Use this for .7z archives containing .isos. Extracts ALL iso files within the archive. Must also specifiy `-x` or `-f`.
+- `-a` : Use this for .7z archives containing .isos. Extracts ALL iso files within the archive. Must also specifiy the `-x` or `-f` flag.
 
 - `-h` : Shows example usage.
 
@@ -66,14 +66,10 @@ Now the application should be in your current working directory.
 
 # Requirements
 
-Libcurl is needed for this program: https://ec.haxx.se/install/linux.html
+Libcurl is needed to compile this program: https://ec.haxx.se/install/linux.html
 
-An Xbox dashboard with an FTP server is needed (or technically any FTP server over port 21), this is the Rocky5 Softmod that installs UnleashX by default: https://github.com/Rocky5/Xbox-Softmodding-Tool/tree/master
+An Xbox dashboard with an FTP server is needed (or technically any FTP server over port 21) to transfer over games, this is the Rocky5 Softmod that installs UnleashX by default: https://github.com/Rocky5/Xbox-Softmodding-Tool/tree/master
 
 # Credits
 
 XDVD File system source material: https://multimedia.cx/xdvdfs.html
-
-# TODO
-
-[ ] - Add multithreading to improve local extraction speed (likely does not matter much for ftp extraction because of Xbox's network throughput)
